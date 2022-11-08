@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { tablet } from '../responsive';
+import {Link} from 'react-router-dom'
 
 const Info = styled.div`
     opacity: 0;
@@ -65,7 +66,7 @@ const CategoryItem = (props) => {
             <Title>
                 {props.item.heading}
             </Title>
-            <Button>SHOP NOW</Button>
+            <Link to={`/products/${props.item.heading.toLowerCase()}`}><Button>SHOP NOW</Button></Link>
         </Info>
     </Container>
   )
