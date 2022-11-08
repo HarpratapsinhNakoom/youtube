@@ -5,6 +5,7 @@ import Products from '../components/Products'
 import Newsletter from '../components/Newsletter'
 import Footer from '../components/Footer'
 import { mobile } from '../responsive';
+import { useLocation } from 'react-router-dom';
 
 const Container = styled.div`
     /* padding: 20px; */
@@ -65,6 +66,24 @@ const Heading = styled.p`
     color: var(--dark-skin);
 `
 const ProductList = () => {
+    const location = useLocation();
+    const category = location.pathname.split("/")[2];
+    const [filters, setFilters] = React.useState({});
+    const [sort, setSort] = React.useState("Most Recent");
+
+    const handleSort = (e) => {
+        setSort(e.target.value)
+    }
+    // console.log(sort);
+    const handleFilter = (e) => {
+        const value = e.target.value;
+        setFilters({
+            ...filters,
+            [e.target.name] : value,
+        });
+
+    };
+    // console.log(filters);
   return (
     <>
         <Navbar />
@@ -74,7 +93,7 @@ const ProductList = () => {
             <FilterContainer>
                 <Filter>
                     <FilterText>Filter Products</FilterText><br />
-                    <Select>
+                    <Select name="color" onChange={handleFilter}>
                         <Option disabled>Color</Option>
                         <Option>White</Option>
                         <Option>Black</Option>
@@ -82,7 +101,7 @@ const ProductList = () => {
                         <Option>Green</Option>
                         <Option>Red</Option>
                     </Select>
-                    <Select>
+                    <Select name="size" onChange={handleFilter}>
                         <Option disabled>Size</Option>
                         <Option>XS</Option>
                         <Option>S</Option>
@@ -93,7 +112,7 @@ const ProductList = () => {
                 </Filter>
                 <Filter>
                     <FilterText>Sort Products</FilterText><br />
-                    <Select defaultValue='Relevancy'>
+                    <Select defaultValue='Relevancy' onChange={handleSort}>
                         <Option>Relevancy</Option>
                         <Option>Lowest Price</Option>
                         <Option>Highest Price</Option>
@@ -103,7 +122,10 @@ const ProductList = () => {
                 </Filter>
             </FilterContainer>
             <Heading>Find something you love</Heading>
-            <Products />
+            <Products category = {category}
+                    filters = {filters}
+                    sort = {sort}
+            />
             <Newsletter />
             <Footer />
         </Container>

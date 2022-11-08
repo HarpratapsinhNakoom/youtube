@@ -73,7 +73,7 @@ export const categoryData = [
         imgLink : 'https://i.etsystatic.com/29559744/r/il/92a11c/4122412900/il_680x540.4122412900_aq2o.jpg'
     },
     {
-        heading : 'FIGURINES',
+        heading : 'FIGURINE',
         imgLink : 'https://images.goodsmile.info/cgm/images/product/20140418/4385/28655/large/048117470adf2f87ad1875558ddb3ccc.jpg'
     }
 ];

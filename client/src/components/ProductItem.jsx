@@ -93,7 +93,7 @@ const ProductPrice = styled.div`
     font-weight: 700;
     margin-bottom: 12px;
 `
-const ProductMaker = styled.div`
+const ProductDesc = styled.div`
     letter-spacing: 1px;
 `
 
@@ -118,7 +118,7 @@ const ProductItem = (props) => {
             <ProductName>Gojo Tshirt</ProductName>
             <ProductRating>4.5</ProductRating>
             <ProductPrice>₹769</ProductPrice>
-            <ProductMaker>Bewakoof - India</ProductMaker>
+            <ProductDesc>Bewakoof - India</ProductDesc>
         </ProductInfo>
     </Container>
   )

@@ -44,7 +44,7 @@ router.delete("/delete_product/:title", verifyTokenAndIsAdmin, async (req,res) =
 })
 
 //---------get product method--------------
-router.get("/find_product/:title", verifyToken, async (req,res) => {
+router.get("/find_product/:title", async (req,res) => {
     try{
         const product = await Product.findById(req.params.title);
         res.status(200).json(product);
@@ -54,7 +54,7 @@ router.get("/find_product/:title", verifyToken, async (req,res) => {
 })
 
 //-----------get all products info----------------
-router.get("/", verifyToken, async (req,res) => {
+router.get("/", async (req,res) => {
     const query_New = req.query.new;
     const query_Category = req.query.category;
     //if a query is sent such that to get only the latest n products
